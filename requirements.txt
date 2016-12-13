@@ -1,0 +1,11 @@
+Django>=1.10
+selenium>=3.0
+# factory_boy
+# faker
+# requests
+# smartystreets
+# psycopg2
+# djangorestframework
+# cryptography
+# pycrypto
+#

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Districts</h1>
+
+<ul>
+{% for district in districts %}
+    <li><a href="/locations/districts/{{ district.id }}/">{{ district.name }}</a> ({{ district.all_childs }})</li>
+{% endfor %}
+</ul>
+
+<ul>
+{% for district in districts %}
+    <li><a href="/locations/districts/{{ district.id }}/">{{ district }}</a></li>
+        {% if district.geodistrict_set.all %}
+        <ul>
+            {% for district in district.geodistrict_set.all %}
+            <li><a href="/locations/districts/{{ district.id }}/">{{ district }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+{% endfor %}
+</ul>
+
+</body>
+</html>

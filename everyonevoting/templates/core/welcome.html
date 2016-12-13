@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block body %}
+<div class="container">
+
+{% if request.user.is_authenticated %}Welcome '{{ request.user.username }}'
+{% else %}<a href="/login">Login</a>
+{% endif %}
+
+    <h1>Welcome to the Open EMS</h1>
+
+    <p>Get started today!</p>
+
+    <form method="post" action="/email/">
+        {% csrf_token %}
+        {{ email_registration_form }} <input type="submit">
+
+    </form>
+
+</div><!-- /.container -->
+{% endblock %}

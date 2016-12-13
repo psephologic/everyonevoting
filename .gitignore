@@ -1,0 +1,19 @@
+# OS stuff
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+
+# IDE stuff
+.idea/
+
+# Database stuff
+*.sqlite3
+
+# Private settings
+everyonevoting/config/secrets.json
