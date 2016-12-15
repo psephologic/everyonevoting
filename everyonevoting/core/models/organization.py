@@ -14,8 +14,8 @@ class Organization(BaseEMSModel):
     """
 
     # EML Core Elements
-    organization_name = models.CharField(max_length=100)  #TODO: EML mapping
-    organization_url = models.URLField(blank=True)
+    name = models.CharField(max_length=100)  #TODO: EML mapping
+    url = models.URLField(blank=True)
     description = models.TextField(blank=True)
     # Initially assign the user that established the organization
     # TODO: Remove unique from column (why?)

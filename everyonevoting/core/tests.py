@@ -1,9 +1,13 @@
+from datetime import datetime
+from freezegun import freeze_time
+
 from django.http import HttpRequest
 from django.template.loader import render_to_string
 from django.test import TestCase, Client
 from django.core.urlresolvers import resolve
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.utils import timezone
 
 from .models import Organization, UserProfile
 from .views import IndexView
@@ -12,17 +16,53 @@ from .views import IndexView
 # TODO: Test organization model creation
 
 
-class IndexPageTest(TestCase):
+class OrganizationTest(TestCase):
 
-    def test_root_url_resolves_to_index_page_view(self):
-        found = resolve('/')
-        self.assertEqual(found.func, IndexView)
+    def setUp(self):
+        # First we create a new user
+        self.user = User.objects.create_user('sjohnson', 'sjohnson@masa.org',
+                                        'sarahpassword')
+        self.user.first_name = "Sarah"
+        self.user.last_name = "Johnson"
+        self.user.save()
 
-    def test_index_page_returns_correct_html(self):
-        request = HttpRequest()
-        response = IndexView.as_view()(request)
-        self.assertTemplateUsed('core/index.html')
-        # self.assertEqual(response.content.decode(), expected_html)
+        # Create test client
+        self.client = Client()
+
+    @freeze_time("2016-12-14")
+    def test_object_creation(self):
+        """Test base object creation and modification time."""
+
+        # Test time created
+        obj = Organization.objects.create(
+            name='Test',
+            responsible_officer=self.user
+        )
+        assert obj.date_created == timezone.now()
+
+        # Test object owner
+
+
+        # Test time modified
+        obj.name = 'Test Again'
+        obj.save()
+        assert obj.date_updated == timezone.now()
+
+    def test_modification_time(self):
+        print('mod test')
+
+
+# class IndexPageTest(TestCase):
+#
+#     def test_root_url_resolves_to_index_page_view(self):
+#         found = resolve('/')
+#         self.assertEqual(found.func, IndexView)
+#
+#     def test_index_page_returns_correct_html(self):
+#         request = HttpRequest()
+#         response = IndexView.as_view()(request)
+#         self.assertTemplateUsed('core/index.html')
+#         # self.assertEqual(response.content.decode(), expected_html)
 
 
 class NewUserTest(TestCase):
@@ -61,7 +101,7 @@ class NewUserTest(TestCase):
         response = self.client.get('/')
         # login(self.client.request, user)
         print("YES, "+str(user.is_authenticated()))
-        print(dir(response.context))
+        #print(dir(response.context))
 
 
     def test_user_email_verification(self):
@@ -70,9 +110,3 @@ class NewUserTest(TestCase):
 
     def test_user_profile(self):
         pass
-
-
-class OrganizationTest(TestCase):
-
-    def test_organization_creation(self):
-        organization = Organization()

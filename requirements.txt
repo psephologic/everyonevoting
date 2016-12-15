@@ -8,4 +8,5 @@ selenium>=3.0
 # djangorestframework
 # cryptography
 # pycrypto
-#
+# getsentry/responses
+freezegun
