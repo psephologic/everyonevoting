@@ -38,18 +38,15 @@ class OrganizationTest(TestCase):
             name='Test',
             responsible_officer=self.user
         )
-        assert obj.date_created == timezone.now()
+        self.assertEqual(obj.date_created, timezone.now(), 'A message...')
 
-        # Test object owner
-
+        # Test object ownership
+        self.assertEqual(obj.responsible_officer, self.user)
 
         # Test time modified
         obj.name = 'Test Again'
         obj.save()
-        assert obj.date_updated == timezone.now()
-
-    def test_modification_time(self):
-        print('mod test')
+        self.assertEqual(obj.date_updated, timezone.now(), 'Another message')
 
 
 # class IndexPageTest(TestCase):

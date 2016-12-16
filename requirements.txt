@@ -9,4 +9,5 @@ selenium>=3.0
 # cryptography
 # pycrypto
 # getsentry/responses
+# getsentry/sentry
 freezegun
