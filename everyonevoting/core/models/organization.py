@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from . import BaseEMSModel
+from . import ManagementItem
 
 
-class Organization(BaseEMSModel):
+class Organization(ManagementItem):
     # TODO: Test case
     """
     Compliant with EML Core v.7-0., ManagingAuthorityStructure

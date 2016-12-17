@@ -2,15 +2,12 @@ from datetime import datetime
 from freezegun import freeze_time
 
 from django.http import HttpRequest
-from django.template.loader import render_to_string
 from django.test import TestCase, Client
-from django.core.urlresolvers import resolve
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 
 from .models import Organization, UserProfile
-from .views import IndexView
 
 # TODO: Test user account and profile creation
 # TODO: Test organization model creation
@@ -47,19 +44,6 @@ class OrganizationTest(TestCase):
         obj.name = 'Test Again'
         obj.save()
         self.assertEqual(obj.date_updated, timezone.now(), 'Another message')
-
-
-# class IndexPageTest(TestCase):
-#
-#     def test_root_url_resolves_to_index_page_view(self):
-#         found = resolve('/')
-#         self.assertEqual(found.func, IndexView)
-#
-#     def test_index_page_returns_correct_html(self):
-#         request = HttpRequest()
-#         response = IndexView.as_view()(request)
-#         self.assertTemplateUsed('core/index.html')
-#         # self.assertEqual(response.content.decode(), expected_html)
 
 
 class NewUserTest(TestCase):
