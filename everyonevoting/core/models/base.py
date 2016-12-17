@@ -9,10 +9,10 @@ class BaseEMSModel(models.Model):
     """
 
     # Basic
-    #created_on = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(User, unique=False, null=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+    #created_by = models.ForeignKey(User, unique=False, null=False)
     updated_on = models.DateTimeField(auto_now=True)
-    updated_by = models.ForeignKey(User, unique=False, null=False)
+    #updated_by = models.ForeignKey(User, unique=False, null=False)
 
     class Meta:
         abstract = True
@@ -20,11 +20,11 @@ class BaseEMSModel(models.Model):
     def create(self):
         pass
 
-    def save(self, request, *args, **kwargs):
-        self.updated_by = request.user
-        self.updated_on = request.date
-        super(BaseEMSModel, self).save(*args, **kwargs)
-        # do_something_else()
+    # def save(self, request, *args, **kwargs):
+    #     self.updated_by = request.user
+    #     self.updated_on = request.date
+    #     super(BaseEMSModel, self).save(*args, **kwargs)
+    #     # do_something_else()
 
 
 class ManagementItem(BaseEMSModel):

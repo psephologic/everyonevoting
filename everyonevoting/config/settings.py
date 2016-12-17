@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     #'elections',
     #'locations',
     #'voters',
+    'actstream',
 )
 
 MIDDLEWARE_CLASSES = (

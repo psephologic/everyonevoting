@@ -10,6 +10,6 @@ selenium>=3.0
 # pycrypto
 # getsentry/responses
 # getsentry/sentry
-# django-activity-stream
+django-activity-stream
 # django-reversion
 freezegun

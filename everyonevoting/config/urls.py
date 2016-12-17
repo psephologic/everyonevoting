@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^email/$', views.email_test),
     url(r'^$', views.IndexView.as_view()),
     url(r'^success/$', views.SuccessView.as_view()),
+    url(r'^activity/', include('actstream.urls')),
     #url(r'^account/', include('accounts.urls')),
     # url(r'^organizations/$', views.organizations),
     # url(r'^([A-Za-z-]*)', views.organization_lookup),
