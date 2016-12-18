@@ -145,4 +145,4 @@ STATICFILES_DIRS = (
 )
 
 # Need to define explicitly for some apps
-# SITE_ID = 1
+SITE_ID = 1
