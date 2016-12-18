@@ -1,10 +1,10 @@
 from django.db import models
 from django.conf import settings
 
-from ..models import BaseEMSModel
+from ..models import BaseModel
 
 
-class UserProfile(BaseEMSModel):
+class UserProfile(BaseModel):
     # TODO: Test case
     # TODO: Decide whether to do this or use AbstractUser
     """

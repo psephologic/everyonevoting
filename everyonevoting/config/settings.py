@@ -131,7 +131,7 @@ USE_TZ = True
 
 # Media
 # TODO: Map this to a proper path
-MEDIA_ROOT = '/Users/eronlloyd/www/openems/'
+MEDIA_ROOT = '/Users/eronlloyd/www/everyonevoting/'
 MEDIA_URL = '/media/'
 
 # Static files (CSS, JavaScript, Images)

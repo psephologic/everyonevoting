@@ -1,6 +1,6 @@
 __author__ = 'eronlloyd'
 
-from . import BaseEMSModel
+from . import BaseModel, Organization
 
 
 import datetime
@@ -54,7 +54,7 @@ class StatusUpdate(models.Model):
     pass
 
 
-class Tag(BaseEMSModel):
+class Tag(BaseModel):
     # public/private
     pass
 
@@ -101,7 +101,7 @@ class Choice(models.Model):
 # Data Import
 # ----------------------------------------------------------------------------
 
-class FileImport(BaseEMSModel):
+class FileImport(BaseModel):
     """Core file import object to track imports and possibly roll them back or
     redo them."""
     # TODO: set a file limit and security check?

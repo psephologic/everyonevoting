@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class BaseEMSModel(models.Model):
+class BaseModel(models.Model):
     """
     Low-level base class for anything needed beyond the Django Model class.
     """
@@ -27,7 +27,7 @@ class BaseEMSModel(models.Model):
     #     # do_something_else()
 
 
-class ManagementItem(BaseEMSModel):
+class ManagementItem(BaseModel):
     """
     The ManagementItem handles all common fields and behaviors of the EMS
     management items provided within the system.
